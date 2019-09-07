@@ -31,7 +31,6 @@ public class UserService {
             return Collections.emptyList();
         }
         return new ArrayList<>(dataBase.values());
-//        return Collections.list((Enumeration<User>) dataBase.values());
     }
 
     public User getUserById(Long id) {
@@ -83,7 +82,9 @@ public class UserService {
     }
 
     public boolean authUser(User user) {
-        if (!isExistsThisUser(user)) { // Если user с таким email есть в dataBase, то теперь его поле id соответствует id из базы
+        // Если user с таким email есть в dataBase, то после
+        // вызова isExistsThisUser() его поле id соответствует id из базы
+        if (!isExistsThisUser(user)) {
             return false;
         }
         if (isUserAuthById(user.getId())) {
